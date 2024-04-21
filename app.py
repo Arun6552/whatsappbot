@@ -80,6 +80,9 @@ def handle_message(user_msg):
     else:
         return handle_help_message(user_msg)
 
+@app.route("/", methods=['GET'])
+def home():
+    return "welcome to the AI bot"
 
 @app.route("/", methods=['POST'])
 def webhook():
@@ -103,7 +106,10 @@ schedule.every(1).minutes.do(send_water_reminder)
 
 if __name__ == "__main__":
     # Start the Flask server
-    app.run(host="127.0.0.1", port=5000,debug=True)
+    port = int(os.getenv('PORT'))
+    print("Starting app on port %d" % port)
+    app.run(debug=False, port=port, host='0.0.0.0')
+    # app.run(debug=True)
 
     # Start the scheduler
     while True:
