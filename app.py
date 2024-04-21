@@ -84,7 +84,7 @@ def handle_message(user_msg):
 def home():
     return "welcome to the AI bot"
 
-@app.route("/", methods=['POST'])
+@app.route("/webhook", methods=['POST'])
 def webhook():
     user_msg = request.values.get('Body', '').strip()
 
