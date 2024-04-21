@@ -80,7 +80,7 @@ def handle_message(user_msg):
     else:
         return handle_help_message(user_msg)
 
-@app.route("/home", methods=['GET'])
+@app.route("/", methods=['GET'])
 def home():
     return "welcome to the AI bot"
 
